@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mila Sousa - Consultoria de Imagem e Estilo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #8C5660;
+            --bg-color: #F2F2F2;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --primary-light: #A86B7A;
+            --primary-dark: #6B3E4A;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header & Avatar Section */
+        .header {
+            text-align: center;
+            padding: 40px 0 30px 0;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid var(--primary-color);
+            overflow: hidden;
+            background-color: var(--white);
+            box-shadow: 0 8px 24px rgba(140, 86, 96, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .bio-intro {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons Section */
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .btn {
+            padding: 16px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+            min-height: 50px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(140, 86, 96, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-color);
+            border-color: var(--primary-dark);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(140, 86, 96, 0.15);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        .btn-icon {
+            font-size: 18px;
+        }
+
+        /* Content Sections */
+        .section {
+            margin-bottom: 28px;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 8px rgba(140, 86, 96, 0.08);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: "✨";
+            font-size: 16px;
+        }
+
+        .section-text {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .service-item {
+            font-size: 13px;
+            color: var(--text-light);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .service-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .service-item strong {
+            color: var(--primary-color);
+        }
+
+        /* Secondary Image Section */
+        .image-section {
+            margin-bottom: 28px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(140, 86, 96, 0.12);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .image-section:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 2px solid var(--primary-color);
+            margin-top: 20px;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .social-link:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(140, 86, 96, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px;
+            }
+
+            .header {
+                padding: 30px 0 20px 0;
+            }
+
+            .avatar {
+                width: 100px;
+                height: 100px;
+                border-width: 3px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .btn {
+                padding: 14px 20px;
+                font-size: 14px;
+            }
+
+            .section {
+                padding: 16px;
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 15px;
+            }
+
+            .section-text {
+                font-size: 12px;
+            }
+
+            .service-item {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .name {
+                font-size: 22px;
+            }
+
+            .tagline {
+                font-size: 12px;
+            }
+
+            .bio-intro {
+                font-size: 12px;
+            }
+
+            .btn {
+                padding: 12px 16px;
+                font-size: 13px;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus states for accessibility */
+        .btn:focus,
+        .social-link:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="avatar">
+                <img src="avatar.jpg" alt="Mila Sousa - Consultora de Imagem e Estilo">
+            </div>
+            <h1 class="name">Mila Sousa</h1>
+            <p class="tagline">Consultoria de Imagem & Estilo</p>
+            <p class="bio-intro">Transformando imagem em estratégia. Ajudando mulheres a comunicarem quem são através da presença, coerência e autenticidade.</p>
+        </div>
+
+        <!-- Primary CTA Button -->
+        <div class="buttons-container">
+            <a href="https://wa.me/5585997928963" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                <span class="btn-icon">💬</span>
+                Entre em contato comigo
+            </a>
+        </div>
+
+        <!-- Sobre Mim Section -->
+        <div class="section">
+            <h2 class="section-title">Sobre Mim</h2>
+            <p class="section-text">
+                Sou Mila Sousa, consultora de imagem e estilo. Acredito que imagem é linguagem. Meu trabalho é ajudar mulheres a traduzirem quem são em presença, coerência e estratégia. Nada de padrões engessados. Aqui, a construção da imagem respeita sua essência, sua rotina e seus objetivos.
+            </p>
+            <p class="section-text" style="margin-top: 12px;">
+                Estilo é ferramenta. E quando usado com intenção, ele comunica antes mesmo de você falar.
+            </p>
+        </div>
+
+        <!-- Minha Missão Section -->
+        <div class="section">
+            <h2 class="section-title">Minha Missão</h2>
+            <p class="section-text">
+                Minha missão é mostrar que se vestir bem vai além de "combinar roupas". É sobre alinhar imagem, identidade e posicionamento. É sobre segurança. É sobre ocupar espaços com clareza e autoridade — sem perder feminilidade, autenticidade ou leveza.
+            </p>
+            <p class="section-text" style="margin-top: 12px;">
+                Eu não mudo quem você é. Eu organizo sua imagem para que ela trabalhe a seu favor.
+            </p>
+        </div>
+
+        <!-- Secondary Image -->
+        <div class="image-section">
+            <img src="foto-secundaria.jpg" alt="Mila Sousa - Consultora de Imagem">
+        </div>
+
+        <!-- Serviços Section -->
+        <div class="section">
+            <h2 class="section-title">Serviços</h2>
+            <div class="services-list">
+                <div class="service-item">
+                    <strong>Consultoria de Imagem Estratégica</strong><br>
+                    Para mulheres que desejam alinhar aparência, personalidade e objetivos profissionais.
+                </div>
+                <div class="service-item">
+                    <strong>Coloração Pessoal</strong><br>
+                    Descubra as cores que iluminam sua imagem, fortalecem sua presença e facilitam suas escolhas.
+                </div>
+                <div class="service-item">
+                    <strong>Montagem de Looks & Detox do Guarda-roupa</strong><br>
+                    Multiplique combinações, ganhe praticidade e vista-se com intenção todos os dias.
+                </div>
+                <div class="service-item">
+                    <strong>Análise de Estilo e Posicionamento de Imagem</strong><br>
+                    Clareza sobre a mensagem que você quer transmitir — e como comunicar isso visualmente.
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary CTA Button -->
+        <div class="buttons-container" style="margin-bottom: 20px;">
+            <a href="https://wa.me/5585997928963" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                <span class="btn-icon">📱</span>
+                Agende uma conversa
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-text">
+                "Sua imagem é sua primeira fala no mundo. Vamos fazer ela dizer exatamente o que você quer comunicar?"
+            </p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/milasousa.consultoria?igsh=N3k3MXEwb2M5YzNx" class="social-link" title="Instagram" target="_blank" rel="noopener noreferrer">
+                    📷
+                </a>
+                <a href="https://wa.me/5585997928963" class="social-link" title="WhatsApp" target="_blank" rel="noopener noreferrer">
+                    💬
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideUp 0.6s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section, .image-section').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Track WhatsApp clicks for analytics (optional)
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('WhatsApp link clicked');
+            });
+        });
+
+        // Prevent multiple rapid clicks
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.disabled) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
