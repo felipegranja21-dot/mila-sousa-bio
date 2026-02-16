@@ -154,20 +154,6 @@
             text-align: justify;
         }
 
-        /* Photo Section */
-        .photo-section {
-            margin: 30px 0;
-            border-radius: 0;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(140, 86, 96, 0.15);
-        }
-
-        .photo-section img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
         /* Services Section */
         .services-card {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
@@ -250,29 +236,45 @@
             border-color: var(--primary-dark);
         }
 
-        /* Quote Section */
-        .quote-section {
-            padding: 40px 24px;
-            text-align: center;
-            background-color: rgba(140, 86, 96, 0.05);
-            margin: 30px 0;
+        /* Photo with Quote Section */
+        .photo-quote-section {
+            position: relative;
+            margin: 0;
+            overflow: hidden;
         }
 
-        .quote-text {
-            font-size: 16px;
+        .photo-quote-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+            padding: 60px 30px 30px;
+            color: var(--white);
+        }
+
+        .overlay-quote {
+            font-size: 18px;
             font-style: italic;
-            color: var(--primary-color);
-            line-height: 1.8;
+            line-height: 1.6;
+            margin-bottom: 12px;
             font-family: 'Georgia', serif;
-            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .quote-author {
+        .overlay-author {
             font-size: 12px;
-            color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-family: 'Segoe UI', sans-serif;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         /* Footer */
@@ -368,12 +370,12 @@
                 padding: 28px 20px;
             }
 
-            .quote-section {
-                padding: 32px 20px;
+            .overlay-quote {
+                font-size: 16px;
             }
 
-            .quote-text {
-                font-size: 15px;
+            .photo-overlay {
+                padding: 50px 24px 24px;
             }
         }
 
@@ -394,6 +396,14 @@
             .cta-button {
                 padding: 16px 20px;
                 font-size: 13px;
+            }
+
+            .overlay-quote {
+                font-size: 15px;
+            }
+
+            .photo-overlay {
+                padding: 40px 20px 20px;
             }
         }
 
@@ -454,11 +464,6 @@
             </div>
         </div>
 
-        <!-- Photo Section -->
-        <div class="photo-section">
-            <img src="foto-secundaria.jpg" alt="Mila Sousa - Consultora de Imagem">
-        </div>
-
         <!-- Services Section -->
         <div class="services-card">
             <h2 class="services-title">Serviços</h2>
@@ -491,12 +496,15 @@
             </a>
         </div>
 
-        <!-- Quote Section -->
-        <div class="quote-section">
-            <p class="quote-text">
-                "Sua imagem é sua primeira fala no mundo. Vamos fazer ela dizer exatamente o que você quer comunicar?"
-            </p>
-            <p class="quote-author">— Mila Sousa</p>
+        <!-- Photo with Quote Overlay -->
+        <div class="photo-quote-section">
+            <img src="foto-final.jpg" alt="Mila Sousa - Consultora de Imagem">
+            <div class="photo-overlay">
+                <p class="overlay-quote">
+                    "Sua imagem é sua primeira fala no mundo. Vamos fazer ela dizer exatamente o que você quer comunicar?"
+                </p>
+                <p class="overlay-author">— Mila Sousa</p>
+            </div>
         </div>
 
         <!-- Footer -->
@@ -541,7 +549,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.section-card, .photo-section, .services-card').forEach(el => {
+        document.querySelectorAll('.section-card, .services-card, .photo-quote-section').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
